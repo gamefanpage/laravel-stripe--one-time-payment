@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
+
+Route::get('/payment_intents', 'CheckoutController@paymentItents')->name('checkout.itent');
+
+Route::post('/webhooks', 'CheckoutController@webhooks')->name('checkout.webhooks');
