@@ -1,6 +1,8 @@
 # laravel-stripe--one-time-payment
 From One-Time Payments (SCA) Live walkthrough of Payment Intents, one-time payments, and automatic confirmation workflows.
 
+Demo Version : [Larastripe Onte-Time Payments](https://larastripe.com/checkout)
+
 ## Getting setup...
 
 1. Copy `.env.example` to `.env`
