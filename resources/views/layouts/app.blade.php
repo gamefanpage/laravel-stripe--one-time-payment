@@ -6,6 +6,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/img/apple-touch-icon/180x180.png') }}">
+    <link rel="icon" href="{{ asset('assets/img/apple-touch-icon/180x180.png') }}">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
