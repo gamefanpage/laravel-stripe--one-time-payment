@@ -1,4 +1,8 @@
 # laravel-stripe--one-time-payment
+
+[![StyleCI](https://styleci.io/repos/12895187/shield?branch=master)](https://styleci.io/repos/12895187)
+[![Laravel Version](https://shield.with.social/cc/github/laravelio/portal/master.svg?style=flat-square)](https://packagist.org/packages/laravel/framework)
+
 From One-Time Payments (SCA) Live walkthrough of Payment Intents, one-time payments, and automatic confirmation workflows.
 
 ## Getting setup...
