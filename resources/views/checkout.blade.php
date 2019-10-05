@@ -19,6 +19,59 @@
     </style>
 @endsection
 
+@section('nav')
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url('/') }}">
+                {{ config('app.name', 'Laravel') }}
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav mr-auto">
+
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
+            </div>
+        </div>
+    </nav>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="py-5 text-center">
@@ -124,9 +177,9 @@
 
         // Pass the PaymentIntent’s client secret to the client
         var paymentIntent;
-        fetch('/payment_intents').then(function(r) {
+        fetch('/payment_intents').then(function (r) {
             return r.json();
-        }).then(function(response) {
+        }).then(function (response) {
             paymentIntent = response;
             console.log("Fetched PI: ", response);
         });
@@ -142,7 +195,7 @@
         var cardMessage = document.getElementById('card-message');  // for testing (to remove)
 
         // var clientSecret = cardButton.dataset.secret;
-        cardButton.addEventListener('click', function(ev) {
+        cardButton.addEventListener('click', function (ev) {
             ev.preventDefault();
             cardMessage.textContent = "Calling handleCardPayment..."; // for testing (to remove)
             stripe.handleCardPayment(
@@ -151,7 +204,7 @@
                         billing_details: {name: cardholderName.value}
                     }
                 }
-            ).then(function(result) {
+            ).then(function (result) {
                 cardMessage.textContent = JSON.stringify(result, null, 2); // for testing (to remove)
                 // if (result.error) {
                 //     // Display error.message in your UI.

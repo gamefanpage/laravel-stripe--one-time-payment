@@ -11,12 +11,17 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
-
 Route::get('/payment_intents', 'CheckoutController@paymentItents')->name('checkout.itent');
+Route::post('/webhooks', 'CheckoutController@webhooks');
 
-Route::post('/webhooks', 'CheckoutController@webhooks')->name('checkout.webhooks');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
