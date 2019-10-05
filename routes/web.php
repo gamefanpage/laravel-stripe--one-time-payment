@@ -20,7 +20,6 @@ Route::get('/', function () {
 
 Route::get('checkout', 'CheckoutController@index')->name('checkout.index');
 Route::get('payment_intents', 'CheckoutController@paymentItents')->name('checkout.itent');
-Route::post('webhooks', 'CheckoutController@webhooks');
 
 Route::post('stripe/webhook', 'WebhooksController@handle');
 

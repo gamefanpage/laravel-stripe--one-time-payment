@@ -45,11 +45,6 @@ class WebhooksController extends Controller
         return response()->json(['message' => 'Webhook Received']);
     }
 
-    public function eventToMethod($event)
-    {
-        return 'when' . Str::studly(str_replace('.', '_', $event));
-    }
-
     public function whenPaymentItentSucceeded($event)
     {
         $intent = $event->data->object;
@@ -61,5 +56,10 @@ class WebhooksController extends Controller
         $intent = $event->data->object;
         $error_message = $intent->last_payment_error ? $intent->last_payment_error->message : "";
         echo("Failed Order: " . $intent->id);
+    }
+
+    public function eventToMethod($event)
+    {
+        return 'when' . Str::studly(str_replace('.', '_', $event));
     }
 }
